@@ -27,7 +27,7 @@ streamlit.dataframe(fruits_to_show)
 # Display New Fruit menu by connecting to Fruityvice.com or Display Fruity Vice API response 
 streamlit.title('My Parents Healthy Diner')
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +"kiwi")
 #streamlit.text(fruityvice_response.json())    # This writes the json data to the screen
 
 #Take the json version of the response and convert to normalize it
