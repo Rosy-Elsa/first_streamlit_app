@@ -70,9 +70,9 @@ if streamlit.button('Get Fruit Load List'):
 #streamlit.stop()
 
 #Challenge lab - Add a second entry fruit to the app selectio
-'''add_my_fruit = streamlit.text_input('What Fruit do you like to add?', 'Apple')
-streamlit.write('Thanks for adding', add_my_fruit)
-my_cur.execute("insert into fruit_load_list values (' "+ add_my_fruit =%s +" ')")'''
+#'''add_my_fruit = streamlit.text_input('What Fruit do you like to add?', 'Apple')
+#streamlit.write('Thanks for adding', add_my_fruit)
+#my_cur.execute("insert into fruit_load_list values (' "+ add_my_fruit =%s +" ')")'''
 
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
