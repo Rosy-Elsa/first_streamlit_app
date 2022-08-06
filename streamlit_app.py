@@ -26,6 +26,10 @@ streamlit.dataframe(fruits_to_show)
 
 # Display New Fruit menu by connecting to Fruityvice.com or Display Fruity Vice API response 
 streamlit.title('My Parents Healthy Diner')
+#Creating a variable fruity_choice to be used as input to FruityVice as an input API call
+fruit_choice = streamlit.text_input('What Fruit would you like information about?', 'Kiwi')
+streamlit.write('The user entered', fruit_choice)
+
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +"kiwi")
 #streamlit.text(fruityvice_response.json())    # This writes the json data to the screen
