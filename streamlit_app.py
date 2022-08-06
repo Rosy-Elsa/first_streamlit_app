@@ -51,15 +51,6 @@ try:
                 #streamlit.dataframe(fruityvice_normalized)     #Output the normalized data onto the screen'''
 except URLError as e:
     streamlit.error()
-    
-
-#Telling py file to use which library from snowflake
-#import snowflake.connector
-
-# my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-# my_cur = my_cnx.cursor()
-# my_cur.execute("SELECT *from fruit_load_list")
-# my_data_rows = my_cur.fetchall()
 
 #Move fruit load list query and load it to a Button Action from Streamlit user interface
 streamlit.text("The Fruit Load list contains:")
@@ -76,9 +67,9 @@ if streamlit.button('Get Fruit Load List'):
     streamlit.dataframe(my_data_rows)
 
     #Do not run any code beyond this point
-streamlit.stop()
+#streamlit.stop()
 
 #Challenge lab - Add a second entry fruit to the app selectio
 add_my_fruit = streamlit.text_input('What Fruit do you like to add?', 'Apple')
 streamlit.write('Thanks for adding', add_my_fruit)
-my_cur.execute("insert into fruit_load_list values ('add_my_fruit')")
+my_cur.execute("insert into fruit_load_list values" (add_my_fruit))
