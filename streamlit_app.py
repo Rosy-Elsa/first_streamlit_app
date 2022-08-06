@@ -28,6 +28,12 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 
+#Create the repeatable code block (called a 'Function")
+def get_fruityvice_data(thisfruit_choice):
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())  #Take the json version of the response and convert to normalize it
+    return fruityvice_normalized     #Output the normalized data onto the screen
+#New Section To Display Fruityvice API Response
 # Display New Fruit menu by connecting to Fruityvice.com or Display Fruity Vice API response 
 streamlit.title('Fruityvice Fruit Advice')
 try:
@@ -36,11 +42,13 @@ try:
         streamlit.error('Please select a valid Fruit choice')
     else:
         streamlit.write('The user entered', fruit_choice)
-#import requests
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-#streamlit.text(fruityvice_response.json())    # This writes the json data to the screen
-        fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())  #Take the json version of the response and convert to normalize it
-        streamlit.dataframe(fruityvice_normalized)     #Output the normalized data onto the screen
+        back_from_function = get_fruityvice_data(fruit_choice)
+        streamlit.dataframe(back_from_function)
+                '''#import requests
+                fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+                #streamlit.text(fruityvice_response.json())    # This writes the json data to the screen
+                fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())  #Take the json version of the response and convert to normalize it
+                streamlit.dataframe(fruityvice_normalized)     #Output the normalized data onto the screen'''
 except URLError as e:
     streamlit.error()
     
