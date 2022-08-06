@@ -52,18 +52,31 @@ try:
 except URLError as e:
     streamlit.error()
     
-#Do not run any code beyond this point
-streamlit.stop()
 
 #Telling py file to use which library from snowflake
 #import snowflake.connector
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT *from fruit_load_list")
-my_data_rows = my_cur.fetchall()
+# my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+# my_cur = my_cnx.cursor()
+# my_cur.execute("SELECT *from fruit_load_list")
+# my_data_rows = my_cur.fetchall()
+
+#Move fruit load list query and load it to a Button Action from Streamlit user interface
 streamlit.text("The Fruit Load list contains:")
-streamlit.dataframe(my_data_rows)
+#Snowflake Related Functions
+def get_fruit_load_list():
+    my_cur = my_cnx.cursor()
+    my_cur.execute("SELECT *from fruit_load_list")
+    return my_cur.fetchall()
+
+# Add the Button to load fruit to snowflake
+if streamlit.button():
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    streamlit.dataframe(my_data_rows)
+
+    #Do not run any code beyond this point
+streamlit.stop()
 
 #Challenge lab - Add a second entry fruit to the app selectio
 add_my_fruit = streamlit.text_input('What Fruit do you like to add?', 'Apple')
