@@ -44,11 +44,11 @@ try:
         streamlit.write('The user entered', fruit_choice)
         back_from_function = get_fruityvice_data(fruit_choice)
         streamlit.dataframe(back_from_function)
-                '''#import requests
-                fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+                #'''#import requests
+                #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
                 #streamlit.text(fruityvice_response.json())    # This writes the json data to the screen
-                fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())  #Take the json version of the response and convert to normalize it
-                streamlit.dataframe(fruityvice_normalized)     #Output the normalized data onto the screen'''
+                #fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())  #Take the json version of the response and convert to normalize it
+                #streamlit.dataframe(fruityvice_normalized)     #Output the normalized data onto the screen'''
 except URLError as e:
     streamlit.error()
     
