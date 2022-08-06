@@ -24,6 +24,8 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 
+# Display New Fruit menu by connecting to Fruityvice.com or Display Fruity Vice API response 
+streamlit.title('My Parents Healthy Diner')
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response)
