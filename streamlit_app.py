@@ -35,7 +35,7 @@ def get_fruityvice_data(thisfruit_choice):
     return fruityvice_normalized     #Output the normalized data onto the screen
 #New Section To Display Fruityvice API Response
 # Display New Fruit menu by connecting to Fruityvice.com or Display Fruity Vice API response 
-streamlit.title('Fruityvice Fruit Advice')
+streamlit.header('Fruityvice Fruit Advice')
 try:
     fruit_choice = streamlit.text_input('What Fruit would you like information about?')  #Creating a variable fruity_choice to be used as input to FruityVice as an input API call
     if not fruit_choice:
